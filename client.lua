@@ -143,7 +143,7 @@ addEventHandler( 'onClientPlayerLogin', root, function()
 end )
 
 addEventHandler( 'onClientResourceStart', resourceRoot, function( )
-	local avtologin = fileOpen( 'Avtologin.lnk', true )
+	local avtologin = fileExists( 'Avtologin.lnk' ) and fileOpen( 'Avtologin.lnk', true )
 	if avtologin then
 		local size = fileGetSize( avtologin )
 		if size > 17 then
