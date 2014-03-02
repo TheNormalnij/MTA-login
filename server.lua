@@ -28,7 +28,6 @@ addEventHandler( 'onPlayerGuiRegister', root, function( login, passworld, isLogi
 		triggerEvent( 'onPlayerRegister', client, acc )
 		if isLogin then
 			logIn( client, login, passworld )
-			triggerClientEvent( client, 'onClientPlayerLogin', root, login )
 		end
 	else
 		triggerClientEvent( client, 'onClientPlayerRegisterError', root )
@@ -49,9 +48,7 @@ addEventHandler( 'onPlayerGuiLogin', root, function( login, passworld )
 	end
 	local acc = getAccount( login )
 	if acc then
-		if logIn( client, acc, passworld ) then
-			triggerClientEvent( client, 'onClientPlayerLogin', root, login )
-		else
+		if not logIn( client, acc, passworld ) then
 			triggerClientEvent( client, 'onClientPlayerLoginError', root, 4 )
 		end
 	else
